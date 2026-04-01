@@ -53,11 +53,13 @@ https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE98793
 ### 3. Model Benchmarking
 Compared multiple machine learning models for MDD classification using 80/20 train/test split:
 
-| Model | Accuracy | Evaluation Method |
-|-------|----------|-------------------|
-| LASSO | ~80% | In-sample |
-| Random Forest | ~59% | OOB (Out-of-Bag) |
-| XGBoost | ~59% | Test set |
+| Model | Accuracy | AUC | Evaluation Method |
+|--------|----------|-----|-------------------|
+| LASSO | — | 0.679 | In-sample |
+| Random Forest | 59.52% | 0.679 | OOB (Out-of-Bag) |
+| XGBoost | **67.74%** | **0.726** Best | Test set |
+
+Note: Low accuracy reflects the challenge of high-dimensional classification with small sample size (n=157).
 
 Note: Low accuracy reflects the challenge of high-dimensional classification with small sample size (n=157). LASSO in-sample accuracy is optimistic due to no held-out test set.
 
