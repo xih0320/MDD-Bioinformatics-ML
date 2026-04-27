@@ -1,12 +1,12 @@
-# Gene Expression Analysis and Network Analysis in MDD
+# Gene Expression Analysis and Machine Learning Modeling for Major Depressive Disorder (MDD)
 
-An end-to-end RNA-seq analysis project investigating gene expression changes associated with Major Depressive Disorder(MDD) using public GEO data(GSE98793, n=192).
+An end-to-end transcriptomic analysis project investigating gene expression changes associated with Major Depressive Disorder(MDD) using public GEO data(GSE98793, n=192).
 
 ---
 
 ## Overview
 
-This project applies statistical modeling, functional enrichment, and protein-protein interaction (PPI) network analysis to characterize transcriptomic changes in MDD. The analysis spans from raw expression data to biologically interpretable findings, with a focus on immune-related gene signatures.
+This project integrates statistical modeling, functional enrichment, and protein-protein interaction (PPI) network analysis with machine learning approaches (LASSO, Random Forest, XGBoost) to predict disease status from gene expression profiles to characterize transcriptomic changes in MDD. The analysis spans from raw expression data to biologically interpretable findings, with a focus on immune-related gene signatures.
 
 ---
 
@@ -49,6 +49,13 @@ This project applies statistical modeling, functional enrichment, and protein-pr
 - Network constructed with `igraph`
 - Hub genes identified by degree centrality
 
+### 6. Machine Learning Modeling (`06_ml_model_comparison.R`)
+- Selected top 200 DE genes as features
+- Built classification models: LASSO (glmnet), Random Forest (ranger), XGBoost
+- Data split into training (80%) and test (20%) sets
+- Model performance evaluated using accuracy, sensitivity, specificity, and AUC
+- LASSO achieved the best performance (AUC = 0.94), demonstrating strong predictive power and feature sparsity
+
 ---
 
 ## Results
@@ -72,6 +79,11 @@ This project applies statistical modeling, functional enrichment, and protein-pr
 
 The most consistently enriched signal points to immune dysregulation — specifically neutrophil granule components and vesicle-mediated secretion. This aligns with existing literature implicating peripheral inflammatory processes in MDD pathophysiology. RORA, a circadian rhythm regulator with known associations to depression, also appeared among top DEGs. While the number of DEGs is relatively small, the consistency across enrichment and network analyses strengthens the confidence in these immune-related signals.
 
+**Machine Learning Performance**
+- LASSO achieved the best performance (Accuracy = 0.865, AUC = 0.94)
+- Random Forest and XGBoost showed lower specificity and overall AUC
+- Results suggest that sparse linear models are particularly effective for high-dimensional gene expression data
+
 ---
 
 ## Project Structure
@@ -83,18 +95,29 @@ MDD_RNAseq_analysis/
 │   ├── 02_qc_pca.R
 │   ├── 03_differential_expression.R
 │   ├── 04_GO_KEGG_enrichment.R
-│   └── 05_string_ppi_network.R
+│   ├── 05_string_ppi_network.R
+│   └── 06_ml_model_comparison.R
+
 ├── results/
 │   ├── MDD_DE_genes_sig.csv
 │   ├── MDD_DE_results_full.csv
 │   ├── GO_enrichment_results.csv
 │   ├── KEGG_enrichment_results.csv
-│   └── STRING_hub_genes.csv
-└── plots/
-    ├── MDD_volcano_plot.png
-    ├── GO_dotplot.png
-    ├── STRING_PPI_network.png
-    └── STRING_hub_genes_barplot.png
+│   ├── STRING_hub_genes.csv
+│   │
+│   ├── ML_model_comparison_summary.csv
+│   ├── LASSO_selected_features.csv
+│   ├── XGBoost_feature_importance.csv
+│   └── RandomForest_feature_importance.csv
+
+├── plots/
+│   ├── MDD_volcano_plot.png
+│   ├── GO_dotplot.png
+│   ├── STRING_PPI_network.png
+│   ├── STRING_hub_genes_barplot.png
+│   │
+│   ├── ML_ROC_curve.png
+│   └── RandomForest_top20_feature_importance.png
 ```
 
 ---
@@ -110,6 +133,7 @@ source("scripts/02_qc_pca.R")
 source("scripts/03_differential_expression.R")
 source("scripts/04_GO_KEGG_enrichment.R")
 source("scripts/05_string_ppi_network.R")
+source("scripts/06_ml_model_comparison.R")
 ```
 
 ---
