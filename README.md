@@ -3,7 +3,6 @@
 An end-to-end bioinformatics project investigating gene expression changes associated with Major Depressive Disorder (MDD) using public GEO microarray data (GSE98793, n = 192).
 
 ---
-
 ## Overview
 
 This project integrates statistical analysis, functional enrichment, protein-protein interaction (PPI) network analysis, and machine learning to characterize transcriptomic changes in MDD.
@@ -11,7 +10,6 @@ This project integrates statistical analysis, functional enrichment, protein-pro
 The workflow spans from raw expression data to biologically interpretable findings, with a focus on identifying immune-related gene signatures and evaluating their predictive power.
 
 ---
-
 ## Dataset
 
 * **GEO Accession:** GSE98793
@@ -20,7 +18,6 @@ The workflow spans from raw expression data to biologically interpretable findin
 * **Source:** Peripheral blood gene expression data
 
 ---
-
 ## Pipeline
 
 ### 1. Data Preprocessing (01_data_preprocessing.R)
@@ -63,7 +60,6 @@ The workflow spans from raw expression data to biologically interpretable findin
 * Evaluation: Accuracy, AUC, Sensitivity, Specificity
 
 ---
-
 ## Key Results
 
 ### Differential Expression
@@ -100,7 +96,6 @@ The workflow spans from raw expression data to biologically interpretable findin
 * Suggests coordinated innate immune activation
 
 ---
-
 ## Machine Learning Performance
 
 * **LASSO AUC: 0.92 (best)**
@@ -110,7 +105,6 @@ The workflow spans from raw expression data to biologically interpretable findin
 LASSO outperformed other models, likely due to its ability to handle high-dimensional data and perform embedded feature selection.
 
 ---
-
 ## Biological Interpretation
 
 Top features identified by Random Forest include:
@@ -130,7 +124,6 @@ Importantly, these findings are consistent with:
 > Together, both statistical and machine learning analyses independently highlight **immune dysregulation as a key mechanism in MDD**.
 
 ---
-
 ## Project Structure
 
 ```
@@ -169,7 +162,6 @@ MDD_microarray_analysis/
 Each step of the pipeline is modularized into separate scripts for reproducibility and clarity.
 
 ---
-
 ## Reproducibility
 
 ```r
@@ -184,7 +176,6 @@ source("scripts/06_ml_model_comparison.R")
 ```
 
 ---
-
 ## Tools & Packages
 
 * GEOquery, limma, sva
@@ -194,7 +185,28 @@ source("scripts/06_ml_model_comparison.R")
 * ggplot2
 
 ---
+## Environment
 
+- R version: 4.4+
+- Key packages:
+  - limma
+  - clusterProfiler
+  - STRINGdb
+  - ranger
+  - glmnet
+  - xgboost
+ 
+---
+## Data Access
+
+Data is publicly available from GEO:
+
+- Accession: GSE98793  
+- Platform: Affymetrix microarray  
+
+Downloaded using GEOquery in R.
+
+---
 ## Conclusion
 
 This project demonstrates an integrated bioinformatics and machine learning workflow to identify biologically meaningful patterns in MDD.
@@ -202,7 +214,11 @@ This project demonstrates an integrated bioinformatics and machine learning work
 Both statistical and predictive modeling approaches consistently indicate that **immune-related mechanisms play a central role in MDD**, highlighting potential biomarkers for future research.
 
 ---
+## Key Takeaway
 
+This project demonstrates that immune-related gene signatures consistently emerge across differential expression, network analysis, and machine learning models, highlighting immune dysregulation as a central mechanism in MDD.
+
+---
 ## Author
 
 **Xinyue (Kitty) Hu**
