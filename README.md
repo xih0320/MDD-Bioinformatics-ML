@@ -207,13 +207,6 @@ Data is publicly available from GEO:
 Downloaded using GEOquery in R.
 
 ---
-## Conclusion
-
-This project demonstrates an integrated bioinformatics and machine learning workflow to identify biologically meaningful patterns in MDD.
-
-Both statistical and predictive modeling approaches consistently indicate that **immune-related mechanisms play a central role in MDD**, highlighting potential biomarkers for future research.
-
----
 ## Key Takeaway
 
 This project demonstrates that immune-related gene signatures consistently emerge across differential expression, network analysis, and machine learning models, highlighting immune dysregulation as a central mechanism in MDD.
