@@ -87,7 +87,7 @@ The workflow spans from raw expression data to biologically interpretable findin
   * secretory granule lumen
 * Indicates **neutrophil-mediated immune activity**
 
-### PPI Network
+### PPI Hub Genes
 
 * Hub genes:
 
