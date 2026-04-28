@@ -71,6 +71,18 @@ The workflow spans from raw expression data to biologically interpretable findin
 * 26 DEGs identified
 * Top genes: RORA, GZMK, RETN, MAFG
 
+
+## Key Visualizations
+
+### ROC Curve
+![ROC Curve](plots/ML_ROC_curve.png)
+
+### Random Forest Feature Importance
+![Feature Importance](plots/RandomForest_top20_feature_importance.png)
+
+### PPI Network
+![PPI Network](plots/STRING_PPI_network.png)
+
 ### Enrichment Analysis
 
 * Significant GO terms enriched in:
