@@ -136,9 +136,37 @@ Importantly, these findings are consistent with:
 ```
 MDD_microarray_analysis/
 ├── scripts/
+│   ├── 01_data_preprocessing.R
+│   ├── 02_qc_pca.R
+│   ├── 03_differential_expression.R
+│   ├── 04_GO_KEGG_enrichment.R
+│   ├── 05_string_ppi_network.R
+│   └── 06_ml_model_comparison.R
+│
 ├── results/
+│   ├── MDD_DE_results_full.csv
+│   ├── MDD_DE_genes_sig.csv
+│   ├── GO_enrichment_results.csv
+│   ├── KEGG_enrichment_results.csv
+│   ├── STRING_hub_genes.csv
+│   ├── ML_model_comparison_summary.csv
+│   ├── LASSO_selected_features.csv
+│   ├── RandomForest_feature_importance.csv
+│   └── XGBoost_feature_importance.csv
+│
 ├── plots/
+│   ├── PCA_before_batch.png
+│   ├── PCA_after_batch.png
+│   ├── MDD_volcano_plot.png
+│   ├── GO_dotplot.png
+│   ├── STRING_PPI_network.png
+│   ├── ML_ROC_curve.png
+│   └── RandomForest_top20_feature_importance.png
+│
+└── README.md
 ```
+
+Each step of the pipeline is modularized into separate scripts for reproducibility and clarity.
 
 ---
 
