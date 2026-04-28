@@ -98,7 +98,7 @@ The workflow spans from raw expression data to biologically interpretable findin
 ---
 ## Machine Learning Performance
 
-* **LASSO AUC: 0.92 (best)**
+* **LASSO AUC: 0.91 (best)**
 * Random Forest AUC: 0.84
 * XGBoost AUC: 0.80
 
