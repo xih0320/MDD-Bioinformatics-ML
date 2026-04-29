@@ -70,22 +70,30 @@ The workflow spans from raw expression data to biologically interpretable findin
 
 ### Enrichment Analysis
 
-  * GO enrichment highlighted vesicle- and granule-related terms:
-    * vesicle lumen
-    * secretory granule lumen
-    * specific granule lumen
+**GO Enrichment:**
 
-  * While over-representation analysis (ORA) using KEGG did not identify significant pathways due to the limited number of DE genes, gene set enrichment analysis (GSEA) revealed significant pathway-level enrichment, including immune-related and inflammatory pathways.
+GO enrichment highlighted vesicle- and granule-related biological processes, including:
+- vesicle lumen
+- secretory granule lumen
+- specific granule lumen
 
-This highlights the importance of using ranking-based methods to capture subtle but coordinated biological signals.
+These terms suggest involvement of neutrophil-mediated immune activity.
 
-  * GSEA-KEGG identified pathway-level enrichment, including:
-    * Complement and coagulation cascades
-    * Neutrophil extracellular trap formation
-    * NOD-like receptor signaling pathway
-    * Ribosome / spliceosome-related processes
+---
 
-  * These results suggest immune-related pathway dysregulation and inflammatory mechanisms in MDD.
+**KEGG Pathway Enrichment:**
+
+While over-representation analysis (ORA) using KEGG did not identify significant pathways due to the limited number of DE genes, gene set enrichment analysis (GSEA) revealed significant pathway-level enrichment.
+
+Key enriched pathways include:
+- Complement and coagulation cascades
+- Neutrophil extracellular trap formation
+- NOD-like receptor signaling pathway
+- Ribosome and spliceosome-related processes
+
+These pathways indicate coordinated immune activation and inflammatory signaling in MDD.
+
+Importantly, this demonstrates that ranking-based approaches such as GSEA can capture subtle but coordinated biological signals that may be missed by threshold-based methods.
 
 ## Key Visualizations
 
@@ -100,7 +108,6 @@ This highlights the importance of using ranking-based methods to capture subtle 
 
 ### GO Enrichment
 ![GO](plots/GO_dotplot.png)
-
 ### GSEA-based KEGG Pathway Enrichment
 ![GSEA](plots/GSEA_KEGG_dotplot.png)
 
