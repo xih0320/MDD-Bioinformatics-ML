@@ -42,9 +42,10 @@ The workflow spans from raw expression data to biologically interpretable findin
 
 ### 4. Functional Enrichment (04_GO_KEGG_enrichment.R)
 
-* GO enrichment (clusterProfiler)
-* KEGG pathway analysis
-* Converted gene symbols → Entrez IDs
+* Gene Ontology (GO) enrichment (over-representation analysis)
+* KEGG pathway enrichment (ORA)
+* GSEA-based KEGG pathway analysis (using ranked gene list)
+* Gene ID conversion (SYMBOL -> ENTREZID)
 
 ### 5. PPI Network (05_string_ppi_network.R)
 
@@ -67,6 +68,22 @@ The workflow spans from raw expression data to biologically interpretable findin
 * 26 DEGs identified
 * Top genes: RORA, GZMK, RETN, MAFG
 
+### Enrichment Analysis
+
+  * GO enrichment highlighted vesicle- and granule-related terms:
+    * vesicle lumen
+    * secretory granule lumen
+    * specific granule lumen
+
+  * Traditional KEGG enrichment did not identify significant pathways, likely due to the limited number of DE genes.
+
+  * GSEA-KEGG identified pathway-level enrichment, including:
+    * Complement and coagulation cascades
+    * Neutrophil extracellular trap formation
+    * NOD-like receptor signaling pathway
+    * Ribosome / spliceosome-related processes
+
+  * These results suggest immune-related pathway dysregulation and inflammatory mechanisms in MDD.
 
 ## Key Visualizations
 
@@ -86,6 +103,10 @@ The workflow spans from raw expression data to biologically interpretable findin
   * vesicle lumen
   * secretory granule lumen
 * Indicates **neutrophil-mediated immune activity**
+
+### KEGG Pathway Enrichment (GSEA)
+
+![GSEA KEGG](plots/GSEA_KEGG_dotplot.png)
 
 ### PPI Hub Genes
 
@@ -146,6 +167,7 @@ MDD_microarray_analysis/
 │   ├── LASSO_selected_features.csv
 │   ├── RandomForest_feature_importance.csv
 │   └── XGBoost_feature_importance.csv
+│   ├── GSEA_KEGG_results.csv
 │
 ├── plots/
 │   ├── PCA_before_batch.png
@@ -155,6 +177,7 @@ MDD_microarray_analysis/
 │   ├── STRING_PPI_network.png
 │   ├── ML_ROC_curve.png
 │   └── RandomForest_top20_feature_importance.png
+│   ├── GSEA_KEGG_dotplot.png
 │
 └── README.md
 ```
