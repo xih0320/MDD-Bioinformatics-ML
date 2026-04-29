@@ -55,10 +55,9 @@ The workflow spans from raw expression data to biologically interpretable findin
 
 ### 6. Machine Learning (06_ml_model_comparison.R)
 
-* Selected **150 significant genes** as features
+* Selected ~150 genes with adjusted p-value < 0.05 (without logFC filtering) as features
 * Models: LASSO, Random Forest, XGBoost
-* Train/test split: 80/20
-* Evaluation: Accuracy, AUC, Sensitivity, Specificity
+* This relaxed filtering allows the model to capture more potentially predictive signals beyond the stricter DEG threshold.
 
 ---
 ## Key Results
@@ -66,7 +65,8 @@ The workflow spans from raw expression data to biologically interpretable findin
 ### Differential Expression
 
 * 26 DEGs identified
-* Top genes: RORA, GZMK, RETN, MAFG
+* Top DE genes (ranked by adjusted p-value / logFC): RORA, GZMK, RETN, MAFG
+
 
 ### Enrichment Analysis
 
@@ -87,14 +87,29 @@ The workflow spans from raw expression data to biologically interpretable findin
 
 ## Key Visualizations
 
-### ROC Curve
-![ROC Curve](plots/ML_ROC_curve.png)
+### PCA (Before Batch Correction)
+![PCA Before](plots/PCA_before_batch.png)
 
-### Random Forest Feature Importance
-![Feature Importance](plots/RandomForest_top20_feature_importance.png)
+### PCA (After Batch Correction)
+![PCA After](plots/PCA_after_batch.png)
+
+### Volcano Plot
+![Volcano](plots/MDD_volcano_plot.png)
+
+### GO Enrichment
+![GO](plots/GO_dotplot.png)
+
+### KEGG Enrichment (GSEA)
+![GSEA](plots/GSEA_KEGG_dotplot.png)
 
 ### PPI Network
-![PPI Network](plots/STRING_PPI_network.png)
+![PPI](plots/STRING_PPI_network.png)
+
+### ROC Curve
+![ROC](plots/ML_ROC_curve.png)
+
+### Feature Importance
+![RF](plots/RandomForest_top20_feature_importance.png)
 
 ### Enrichment Analysis
 
@@ -103,10 +118,6 @@ The workflow spans from raw expression data to biologically interpretable findin
   * vesicle lumen
   * secretory granule lumen
 * Indicates **neutrophil-mediated immune activity**
-
-### KEGG Pathway Enrichment (GSEA)
-
-![GSEA KEGG](plots/GSEA_KEGG_dotplot.png)
 
 ### PPI Hub Genes
 
@@ -128,7 +139,7 @@ LASSO outperformed other models, likely due to its ability to handle high-dimens
 ---
 ## Biological Interpretation
 
-Top features identified by Random Forest include:
+Top features identified by Random Forest(based on model importance):
 
 * CD48
 * SH2D1A
@@ -136,6 +147,7 @@ Top features identified by Random Forest include:
 * RETN
 
 These genes are involved in **immune cell activation, inflammation, and T-cell signaling**.
+Notably, some genes (e.g., GZMK, RETN) were consistently identified by both statistical and machine learning approaches, suggesting robust biological relevance.
 
 Importantly, these findings are consistent with:
 
@@ -166,18 +178,20 @@ MDD_microarray_analysis/
 │   ├── ML_model_comparison_summary.csv
 │   ├── LASSO_selected_features.csv
 │   ├── RandomForest_feature_importance.csv
-│   └── XGBoost_feature_importance.csv
-│   ├── GSEA_KEGG_results.csv
+│   ├── XGBoost_feature_importance.csv
+│   └── GSEA_KEGG_results.csv
 │
 ├── plots/
 │   ├── PCA_before_batch.png
+│   ├── PCA_before_group.png
 │   ├── PCA_after_batch.png
+│   ├── PCA_after_group.png
 │   ├── MDD_volcano_plot.png
 │   ├── GO_dotplot.png
+│   ├── GSEA_KEGG_dotplot.png
 │   ├── STRING_PPI_network.png
 │   ├── ML_ROC_curve.png
 │   └── RandomForest_top20_feature_importance.png
-│   ├── GSEA_KEGG_dotplot.png
 │
 └── README.md
 ```
@@ -230,6 +244,13 @@ Data is publicly available from GEO:
 Downloaded using GEOquery in R.
 
 ---
+## Limitations
+
+- The number of significant DE genes was relatively small, which limited the power of ORA-based KEGG analysis.
+- The dataset is based on peripheral blood, which may not fully capture brain-specific mechanisms in MDD.
+
+---
+
 ## Key Takeaway
 
 This project demonstrates that immune-related gene signatures consistently emerge across differential expression, network analysis, and machine learning models, highlighting immune dysregulation as a central mechanism in MDD.
