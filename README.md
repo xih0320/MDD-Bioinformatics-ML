@@ -75,7 +75,9 @@ The workflow spans from raw expression data to biologically interpretable findin
     * secretory granule lumen
     * specific granule lumen
 
-  * Traditional KEGG enrichment did not identify significant pathways, likely due to the limited number of DE genes.
+  * While over-representation analysis (ORA) using KEGG did not identify significant pathways due to the limited number of DE genes, gene set enrichment analysis (GSEA) revealed significant pathway-level enrichment, including immune-related and inflammatory pathways.
+
+This highlights the importance of using ranking-based methods to capture subtle but coordinated biological signals.
 
   * GSEA-KEGG identified pathway-level enrichment, including:
     * Complement and coagulation cascades
@@ -99,7 +101,7 @@ The workflow spans from raw expression data to biologically interpretable findin
 ### GO Enrichment
 ![GO](plots/GO_dotplot.png)
 
-### KEGG Enrichment (GSEA)
+### GSEA-based KEGG Pathway Enrichment
 ![GSEA](plots/GSEA_KEGG_dotplot.png)
 
 ### PPI Network
